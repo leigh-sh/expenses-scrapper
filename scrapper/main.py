@@ -7,7 +7,7 @@ import click
 from pyvirtualdisplay import Display
 
 from extract_csv import extract_csv
-from fetch_html_report import fetch_accounts_data
+from fetch_record import fetch_accounts_data
 from import_csv import import_expenses
 from transform_csv import transform_csv
 
