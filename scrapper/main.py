@@ -8,7 +8,7 @@ from pyvirtualdisplay import Display
 
 from extract_csv import extract_csv
 from fetch_html_report import fetch_accounts_data
-from import_csv import import_to_ynab
+from import_csv import import_expenses
 from transform_csv import transform_csv
 
 logging.basicConfig(level=logging.INFO)
@@ -68,8 +68,8 @@ def run_flow(conf_path, ctx, fetch_data, root_path):
         extracted_csv_file = _extract_csv(ctx, extracted_csv_root, report)
         _transform_csv(ctx, extracted_csv_file, report, transformed_csv_root)
     subprocess.run(['bash', 'merge_csv.sh', str(transformed_csv_root)])
-    logging.info('Importing CSVs to YNAB')
-    ctx.invoke(import_to_ynab, conf_path=conf_path, input_path=transformed_csv_root)
+    logging.info('Importing CSVs')
+    ctx.invoke(import_expenses, conf_path=conf_path, input_path=transformed_csv_root)
 
 
 if __name__ == "__main__":
