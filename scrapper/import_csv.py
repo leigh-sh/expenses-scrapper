@@ -108,7 +108,7 @@ def get_creds(conf_path):
 @click.command()
 @click.argument('conf_path')
 @click.argument('input_path')
-def import_to_ynab(conf_path, input_path):
+def import_expenses(conf_path, input_path):
     input_path = Path(input_path)
     _create_driver()
     _login(*get_creds(conf_path))
@@ -117,4 +117,4 @@ def import_to_ynab(conf_path, input_path):
 
 
 if __name__ == "__main__":
-    import_to_ynab()
+    import_expenses()
